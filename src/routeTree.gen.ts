@@ -13,6 +13,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AmenitiesRouteImport } from './routes/amenities'
 import { Route as CafeRouteImport } from './routes/cafe'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as LocationRouteImport } from './routes/location'
 import { Route as RoomsRouteImport } from './routes/rooms'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +38,21 @@ const CafeRoute = CafeRouteImport.update({
   path: '/cafe',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationRoute = LocationRouteImport.update({
+  id: '/location',
+  path: '/location',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RoomsRoute = RoomsRouteImport.update({
   id: '/rooms',
   path: '/rooms',
@@ -46,6 +64,9 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/amenities': typeof AmenitiesRoute
   '/cafe': typeof CafeRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/location': typeof LocationRoute
   '/rooms': typeof RoomsRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +74,9 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/amenities': typeof AmenitiesRoute
   '/cafe': typeof CafeRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/location': typeof LocationRoute
   '/rooms': typeof RoomsRoute
 }
 export interface FileRoutesById {
@@ -61,14 +85,42 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/amenities': typeof AmenitiesRoute
   '/cafe': typeof CafeRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/location': typeof LocationRoute
   '/rooms': typeof RoomsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/amenities' | '/cafe' | '/rooms'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/amenities'
+    | '/cafe'
+    | '/contact'
+    | '/gallery'
+    | '/location'
+    | '/rooms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/amenities' | '/cafe' | '/rooms'
-  id: '__root__' | '/' | '/about' | '/amenities' | '/cafe' | '/rooms'
+  to:
+    | '/'
+    | '/about'
+    | '/amenities'
+    | '/cafe'
+    | '/contact'
+    | '/gallery'
+    | '/location'
+    | '/rooms'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/amenities'
+    | '/cafe'
+    | '/contact'
+    | '/gallery'
+    | '/location'
+    | '/rooms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +128,9 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AmenitiesRoute: typeof AmenitiesRoute
   CafeRoute: typeof CafeRoute
+  ContactRoute: typeof ContactRoute
+  GalleryRoute: typeof GalleryRoute
+  LocationRoute: typeof LocationRoute
   RoomsRoute: typeof RoomsRoute
 }
 
@@ -109,6 +164,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CafeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/location': {
+      id: '/location'
+      path: '/location'
+      fullPath: '/location'
+      preLoaderRoute: typeof LocationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rooms': {
       id: '/rooms'
       path: '/rooms'
@@ -124,6 +200,9 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AmenitiesRoute: AmenitiesRoute,
   CafeRoute: CafeRoute,
+  ContactRoute: ContactRoute,
+  GalleryRoute: GalleryRoute,
+  LocationRoute: LocationRoute,
   RoomsRoute: RoomsRoute,
 }
 export const routeTree = rootRouteImport
